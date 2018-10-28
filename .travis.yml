@@ -33,6 +33,7 @@ env:
   
 before_install:
   - phpenv config-rm xdebug.ini
+  - git checkout -qf behat_fix
   - nvm install 8.9
   - nvm use 8.9
   - cd ../..
@@ -40,7 +41,7 @@ before_install:
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
 
 install:
-  - moodle-plugin-ci install --branch=behat_fix
+  - moodle-plugin-ci install
 
 script:
   - moodle-plugin-ci phpunit --coverage_clover
