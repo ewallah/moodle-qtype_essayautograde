@@ -21,9 +21,15 @@ php:
  - 7.2
 
 env:
-  - DB=pgsql MOODLE_BRANCH=travis_fix
-  - DB=mysqli MOODLE_BRANCH=travis_fix
-  - DB=mariaidb MOODLE_BRANCH=travis_fix
+  #- DB=pgsql MOODLE_BRANCH=MOODLE_34_STABLE
+  #- DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
+  - DB=pgsql MOODLE_BRANCH=master
+  #- DB=mysqli MOODLE_BRANCH=MOODLE_34_STABLE
+  #- DB=mysqli MOODLE_BRANCH=MOODLE_35_STABLE
+  #- DB=mysqli MOODLE_BRANCH=master
+  #- DB=mariadb MOODLE_BRANCH=MOODLE_34_STABLE
+  #- DB=mariadb MOODLE_BRANCH=MOODLE_35_STABLE
+  #- DB=mariadb MOODLE_BRANCH=master
   
 before_install:
   - phpenv config-rm xdebug.ini
@@ -34,10 +40,10 @@ before_install:
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
 
 install:
-  - moodle-plugin-ci install
+  - moodle-plugin-ci install --branch=behat_fix
 
 script:
-  - moodle-plugin-ci phpunit --coverage-text
+  - moodle-plugin-ci phpunit --coverage_clover
   - moodle-plugin-ci phpunit --coverage-clover
   - moodle-plugin-ci behat
   - moodle-plugin-ci behat --profile chrome
