@@ -17,7 +17,7 @@ cache:
     - $HOME/.npm
 
 php:
- - 7.0
+ #- 7.0
  - 7.2
 
 env:
@@ -33,7 +33,9 @@ env:
   
 before_install:
   - phpenv config-rm xdebug.ini
-  - git checkout -qf behat_fix
+  - git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+  - git fetch --unshallow --tags
+  - git symbolic-ref --short HEAD || git checkout -b behat_fix
   - nvm install 8.9
   - nvm use 8.9
   - cd ../..
