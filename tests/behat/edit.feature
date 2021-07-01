@@ -37,7 +37,7 @@ Feature: Test editing an Essay autograde question
       | Response format          | Plain text                                              |
 
   Scenario: Edit an Essay autograde question
-    When I click on "Edit" "link" in the "essayautograde-001" "table_row"
+    When I choose "Edit question" action for "essayautograde-001" in the question bank
     And I set the following fields to these values:
       | Question name | |
     And I press "id_submitbutton"

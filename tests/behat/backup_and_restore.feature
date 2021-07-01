@@ -42,25 +42,25 @@ Feature: Test duplicating a quiz containing an Essay autograde question
     And I should see "essayautograde-001"
     And I should see "essayautograde-002"
     And I should see "essayautograde-003"
-    And I click on "Edit" "link" in the "essayautograde-001" "table_row"
+    And I choose "Edit question" action for "essayautograde-001" in the question bank
     Then the following fields match these values:
-      | Question name              | essayautograde-001                                               |
+      | Question name              | essayautograde-001                                      |
       | Question text              | Please write a story about a frog.                      |
       | General feedback           | I hope your story had a beginning, a middle and an end. |
       | Response format            | HTML editor                                             |
       | Require text               | Require the student to enter text                       |
     And I press "Cancel"
-    And I click on "Edit" "link" in the "essayautograde-002" "table_row"
+    And I choose "Edit question" action for "essayautograde-002" in the question bank
     Then the following fields match these values:
-      | Question name              | essayautograde-002                                               |
+      | Question name              | essayautograde-002                                      |
       | Question text              | Please write a story about a frog.                      |
       | General feedback           | I hope your story had a beginning, a middle and an end. |
       | Response format            | HTML editor with file picker                            |
       | Require text               | Require the student to enter text                       |
     And I press "Cancel"
-    And I click on "Edit" "link" in the "essayautograde-003" "table_row"
+    And I choose "Edit question" action for "essayautograde-003" in the question bank
     Then the following fields match these values:
-      | Question name              | essayautograde-003                                               |
+      | Question name              | essayautograde-003                                      |
       | Question text              | Please write a story about a frog.                      |
       | General feedback           | I hope your story had a beginning, a middle and an end. |
       | Response format            | Plain text                                              |
