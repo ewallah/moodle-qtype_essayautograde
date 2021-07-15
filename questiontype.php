@@ -79,6 +79,7 @@ class qtype_essayautograde extends question_type {
                      'showtextstats', 'textstatitems',
                      'showgradebands', 'addpartialgrades','showtargetphrases',
                      'errorcmid', 'errorpercent',
+                     'errorfullmatch', 'errorcasesensitive', 'errorignorebreaks',
                      'correctfeedback', 'correctfeedbackformat',
                      'incorrectfeedback', 'incorrectfeedbackformat',
                      'partiallycorrectfeedback', 'partiallycorrectfeedbackformat');
@@ -159,6 +160,9 @@ class qtype_essayautograde extends question_type {
             'showtargetphrases'   => isset($formdata->showtargetphrases) ? $formdata->showtargetphrases : 1,
             'errorcmid'           => isset($formdata->errorcmid) ? $formdata->errorcmid : 0,
             'errorpercent'        => isset($formdata->errorpercent) ? $formdata->errorpercent : 0,
+            'errorfullmatch'      => isset($formdata->errorfullmatch) ? $formdata->errorfullmatch : 0,
+            'errorcasesensitive'  => isset($formdata->errorcasesensitive) ? $formdata->errorcasesensitive : 0,
+            'errorignorebreaks'   => isset($formdata->errorignorebreaks) ? $formdata->errorignorebreaks : 0,
         );
 
         if ($cmid = $options->errorcmid) {
@@ -521,7 +525,7 @@ class qtype_essayautograde extends question_type {
                 continue;
             }
             if (in_array($field, $textfields)) {
-                $files = $fs->get_area_files($contextid, 'question', $field, $questionid);
+                $files = $fs->get_area_files($question->contextid, 'question', $field, $question->id);
                 $output .= "    <$field ".$format->format($question->options->{$field.'format'}).">\n";
                 $output .= '      '.$format->writetext($question->options->$field);
                 $output .= $format->write_files($files);
